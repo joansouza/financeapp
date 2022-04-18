@@ -21,19 +21,7 @@ export const AddButton = styled.div`
 export const Appdiv = styled.div`
   padding-bottom: 30px;
 `;
-export const GeneralInfo = styled.div`
-  display: flex;
-`;
-export const Content = styled(ContainerApp)`
-  h1 {
-    padding-top: 20px;
-  }
-  width: 300px;
-  max-width: 100%;
-  border-radius: 10px;
-  background: #672beb;
-  color: #fff;
-`;
+
 export const DescriptionBar = styled(ContainerApp)`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
@@ -48,4 +36,7 @@ export const DescriptionBar = styled(ContainerApp)`
     font-weight: lighter;
     font-size: 20px;
   }
+`;
+export const GeneralInfo = styled.div`
+  display: flex;
 `;

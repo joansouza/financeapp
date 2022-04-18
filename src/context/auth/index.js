@@ -17,6 +17,18 @@ export function AuthProvider({ children }) {
   function singin(authData, email, password) {
     return signInWithEmailAndPassword(authData, email, password);
   }
+  function getTotal(Items) {
+    if (Items.length > 1) {
+      const total = Items.reduce((soma, income) => soma + income.amount, 0);
+      return total;
+    }
+    if (Items.length < 1) {
+      const total = 0;
+      return total;
+    }
+    const total = Items[0].amount;
+    return total;
+  }
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
@@ -25,7 +37,7 @@ export function AuthProvider({ children }) {
     return unsubscribe;
   }, []);
   return (
-    <AuthContext.Provider value={{ currentUser, singup, singin }}>
+    <AuthContext.Provider value={{ currentUser, singup, singin, getTotal }}>
       {!loading && children}
     </AuthContext.Provider>
   );

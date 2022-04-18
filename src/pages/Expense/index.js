@@ -5,11 +5,13 @@ import { useAuth } from '../../context/auth/index';
 import ExpenseCreateModal from './components/ExpenseCreateModal';
 import * as S from './styles';
 import Header from '../../components/Header';
-import AppList from '../../components/AppList';
+
+import ShowExpenses from './components/ShowExpenses';
 
 function Expense() {
   const [expenses, setExpenses] = useState();
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [reload, setReload] = useState(false);
   const { currentUser } = useAuth();
   const docRef = collection(db, `${currentUser.email}Expense`);
 
@@ -21,7 +23,7 @@ function Expense() {
     };
 
     getUsers();
-  }, []);
+  }, [reload]);
 
   return (
     <S.Container>
@@ -40,25 +42,16 @@ function Expense() {
         <ExpenseCreateModal
           onClose={() => setIsModalVisible(false)}
           user={currentUser.email}
+          closeModal={() => setIsModalVisible(false)}
+          reload={() => setReload(!reload)}
         />
       ) : null}
-      <S.GeneralInfo>
-        <S.Content> Despesas Pagas</S.Content>
-        <S.Content>Total</S.Content>
-      </S.GeneralInfo>
-      <S.DescriptionBar>
-        <h1>Data</h1>
-        <h1>Descrição</h1>
-        <h1>Categoria</h1>
-        <h1>Valor</h1>
-        <h1>Ações</h1>
-      </S.DescriptionBar>
 
       {expenses ? (
-        <AppList
+        <ShowExpenses
           arrayItems={expenses}
           user={currentUser.email}
-          type="Expense"
+          reload={() => setReload(!reload)}
         />
       ) : null}
     </S.Container>

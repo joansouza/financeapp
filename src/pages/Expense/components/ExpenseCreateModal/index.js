@@ -3,7 +3,12 @@ import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import * as S from './styles';
 import { db } from '../../../../config/firebase-config';
 
-export default function ExpenseCreateModal({ user, onClose = () => {} }) {
+export default function ExpenseCreateModal({
+  user,
+  onClose = () => {},
+  closeModal = () => {},
+  reload = () => {},
+}) {
   const valueRef = useRef();
   const descriptionRef = useRef();
   const categoryRef = useRef();
@@ -12,14 +17,16 @@ export default function ExpenseCreateModal({ user, onClose = () => {} }) {
     e.preventDefault();
     const newExpense = {
       id: +new Date(),
-      amount: valueRef.current.value,
-      descripton: descriptionRef.current.value,
+      amount: Number(valueRef.current.value),
+      description: descriptionRef.current.value,
       category: categoryRef.current.value,
       createdAt: serverTimestamp(),
     };
 
     const docRef = collection(db, `${user}Expense`);
     await addDoc(docRef, { ...newExpense });
+    reload();
+    closeModal();
   };
 
   return (
@@ -29,9 +36,9 @@ export default function ExpenseCreateModal({ user, onClose = () => {} }) {
         <input ref={descriptionRef} placeholder="descrição" type="text" />
 
         <select name="category" ref={categoryRef}>
-          <option value="count">Contas</option>
-          <option value="fun">Lazer</option>
-          <option value="others">Outros</option>
+          <option value="Contas">Contas</option>
+          <option value="Lazer">Lazer</option>
+          <option value="Outros">Outros</option>
         </select>
         <button type="submit">SALVAR</button>
       </S.Form>

@@ -38,6 +38,7 @@ export const Form = styled.form`
   }
   button {
     margin-top: 20px;
+    padding: 10px 20px;
   }
   button:hover {
     filter: brightness(85%);

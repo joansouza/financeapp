@@ -36,7 +36,7 @@ export const Content = styled(ContainerApp)`
 `;
 export const DescriptionBar = styled(ContainerApp)`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   max-width: 100%;
   margin: 10px 60px 0 60px;
   background: #672beb;
