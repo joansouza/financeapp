@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const DescriptionBar = styled.div`
+padding:25px ;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   max-width: 100%;
