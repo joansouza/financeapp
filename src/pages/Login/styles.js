@@ -17,6 +17,9 @@ export const EnterButtons = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
+  a:hover {
+    color: #672beb;
+  }
 `;
 export const FormDiv = styled(ContainerApp)`
   width: 400px;

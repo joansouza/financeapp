@@ -15,7 +15,6 @@ export default function MonthGraph() {
   const colRef2 = collection(db, `${currentUser.email}Expense`);
 
   function filterMonth(arr) {
-    console.log(month);
     return arr.filter(
       (item) => item.createdAt.toDate().getMonth() === Number(month)
     );
@@ -56,7 +55,6 @@ export default function MonthGraph() {
         <option value={10}>Novembro</option>
         <option value={11}>Dezembro</option>
       </select>
-      {incomeData ? console.log(incomeData) : null}
       {incomeData &&
       incomeData.length > 0 &&
       expenseData &&

@@ -15,7 +15,7 @@ function Register() {
     try {
       await singup(auth, email, password).then(route('/dashboard'));
     } catch (error) {
-      console.log(error.message);
+      alert('email ou senha inválidos!');
     }
   };
 

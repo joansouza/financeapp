@@ -13,6 +13,10 @@ export const Container = styled.div`
   grid-template-columns: 2fr 1fr;
 `;
 export const EnterButtons = styled.div`
+  a:hover {
+    color: #672beb;
+  }
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,6 +42,7 @@ export const Form = styled.form`
   }
   button {
     margin-top: 20px;
+    padding: 10px 20px;
   }
   button:hover {
     filter: brightness(85%);

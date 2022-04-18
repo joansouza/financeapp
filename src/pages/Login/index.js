@@ -20,7 +20,7 @@ function Login() {
         loginPassword.current.value
       ).then(() => route('/dashboard'));
     } catch (error) {
-      console.log(error);
+      alert('email ou senha inválidos!');
     }
   };
 
